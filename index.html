@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WriteBee — Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&family=Fredoka:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="assets/images/bee-icon.png">
+  <link rel="apple-touch-icon" href="assets/images/bee-icon.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#FFD84D">
+  <script src="js/icon.js" defer></script>
+</head>
+<body class="page-home">
+  <header class="topbar">
+    <div class="logo">
+      <img src="assets/images/bee.svg" alt="WriteBee Bee" class="bee">
+      <h1>WriteBee</h1>
+    </div>
+  </header>
+
+  <main class="center">
+    <section class="hero">
+      <h2>Help the bee learn to write!</h2>
+      <p class="sub">Practice tracing lines, shapes and letters — perfect for ages 1–5.</p>
+      <a class="btn primary big" href="level.html">Start Playing 🐝</a>
+    </section>
+
+    <section class="preview">
+      <h3>Levels</h3>
+      <div class="levels">
+        <div class="card">Level 1<br><small>Motor Skills</small></div>
+        <div class="card">Level 2<br><small>Uppercase</small></div>
+        <div class="card">Level 3<br><small>Lowercase & Words</small></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">&copy; WriteBee — Friendly tracing for little hands</footer>
+
+  <div id="iconAdmin" class="icon-admin hidden" role="region" aria-label="Admin: upload site icon">
+    <label style="font-weight:700">Unggah ikon (gunakan ?admin=1 untuk tampilkan):</label>
+    <input id="iconUpload" type="file" accept="image/*">
+    <a id="downloadIcon" class="btn small" download="bee-icon.png" style="display:none;margin-left:8px">Download Icon</a>
+  </div>
+
+  <script src="js/level.js" defer></script>
+</body>
+</html>

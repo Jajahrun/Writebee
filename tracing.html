@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WriteBee — Tracing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&family=Fredoka:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="assets/images/bee-icon.png">
+  <link rel="apple-touch-icon" href="assets/images/bee-icon.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#FFD84D">
+  <script src="js/icon.js" defer></script>
+</head>
+<body class="page-tracing">
+  <header class="topbar">
+    <div class="logo">
+      <img src="assets/images/bee.svg" alt="Bee" class="bee">
+      <h1>WriteBee</h1>
+    </div>
+    <a class="btn link small" href="level.html">⟵ Levels</a>
+  </header>
+
+  <div id="colorPalette" class="color-palette minimized" aria-hidden="true">
+    <button id="paletteToggle" class="palette-toggle" aria-label="Pilih warna" title="Warna goresan" aria-expanded="false">
+      <img id="paletteIconImg" class="palette-icon-img" src="assets/images/pallate.png" alt="Palet warna" onerror="this.onerror=null;this.src='assets/images/pallate.svg'" aria-hidden="true"/>
+    </button>
+
+    <div class="palette-panel" id="palettePanel" aria-hidden="true">
+      <div class="colors d-flex gap-2 p-2 flex-wrap">
+        <button class="color-btn active" data-color="#FF6F00" style="background:#FF6F00" aria-label="Oranye"></button>
+        <button class="color-btn" data-color="#FFD84D" style="background:#FFD84D" aria-label="Kuning"></button>
+        <button class="color-btn" data-color="#FFA726" style="background:#FFA726" aria-label="Orange"></button>
+        <button class="color-btn" data-color="#4CAF50" style="background:#4CAF50" aria-label="Hijau"></button>
+        <button class="color-btn" data-color="#2196F3" style="background:#2196F3" aria-label="Biru"></button>
+        <button class="color-btn" data-color="#9C27B0" style="background:#9C27B0" aria-label="Ungu"></button>
+        <button class="color-btn" data-color="#FF4081" style="background:#FF4081" aria-label="Pink"></button>
+        <button class="color-btn" data-color="#000000" style="background:#000000" aria-label="Hitam"></button>
+      </div>
+    </div>
+  </div>
+
+  <main class="tracing-area">
+    <div class="shape-selector" role="toolbar" aria-label="Pilih bentuk tracing">
+      <button class="shape-btn" data-shape="vertical">Vertical</button>
+      <button class="shape-btn" data-shape="horizontal">Horizontal</button>
+      <button class="shape-btn" data-shape="circle">Circle</button>
+      <button class="shape-btn" data-shape="wave">Wave</button>
+      <button class="shape-btn" data-shape="square">Square</button>
+      <button class="shape-btn" data-shape="triangle">Triangle</button>
+      <button class="shape-btn" data-shape="spiral">Spiral</button>
+      <button class="shape-btn" data-shape="maze">Simple Maze</button>
+    </div>
+
+    <div class="canvas-wrap">
+      <canvas id="traceCanvas" width="800" height="600" aria-label="Tracing canvas"></canvas>
+    </div>
+
+    <div class="controls">
+      <button id="resetBtn" class="btn">Reset</button>
+      <button id="finishBtn" class="btn primary" disabled>Finish</button>
+    </div>
+  </main>
+
+  <div id="reward" class="reward hidden" role="dialog" aria-hidden="true">
+    <div class="reward-card">
+      <div class="stars" id="stars"></div>
+      <h2>Hebat! 🎉</h2>
+      <button id="continueBtn" class="btn primary">Continue</button>
+    </div>
+  </div>
+
+  <script type="module" src="js/tracing.js"></script>
+  <script type="module" src="js/audio.js"></script>
+</body>
+</html>

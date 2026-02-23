@@ -1,0 +1,12 @@
+{
+  "name": "WriteBee",
+  "short_name": "WriteBee",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFF8E1",
+  "theme_color": "#FFD84D",
+  "icons": [
+    {"src": "assets/images/bee-icon.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "assets/images/bee-icon.png", "sizes": "512x512", "type": "image/png"}
+  ]
+}

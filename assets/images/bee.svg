@@ -1,0 +1,10 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bee mascot">
+  <g transform="translate(10,10)">
+    <ellipse cx="50" cy="45" rx="28" ry="20" fill="#FFD84D" stroke="#2C2C2C" stroke-width="3" />
+    <rect x="36" y="28" width="28" height="14" rx="7" fill="#2C2C2C" />
+    <circle cx="36" cy="36" r="6" fill="#fff" />
+    <circle cx="64" cy="36" r="6" fill="#fff" />
+    <path d="M20 40 C10 20, 60 8, 44 36" stroke="#2C2C2C" stroke-width="3" fill="none"/>
+    <path d="M80 36 C85 20, 120 14, 100 40" stroke="#2C2C2C" stroke-width="3" fill="none"/>
+  </g>
+</svg>

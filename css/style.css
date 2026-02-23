@@ -1,0 +1,80 @@
+:root{
+  --yellow:#FFD84D;
+  --orange:#FFA726;
+  --cream:#FFF8E1;
+  --dark:#2C2C2C;
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:'Fredoka', 'Baloo 2', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color:var(--dark); background:var(--cream)}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo h1{margin:0;font-size:24px}
+.bee{width:56px;height:56px}
+.center{max-width:980px;margin:20px auto;padding:0 18px}
+.hero{background:linear-gradient(135deg,var(--yellow),var(--orange));padding:26px;border-radius:18px;box-shadow:0 6px 18px rgba(0,0,0,0.08);text-align:center;color:#2C2C2C}
+.hero h2{margin:0 0 8px;font-size:28px}
+.btn{display:inline-block;padding:12px 18px;border-radius:12px;border:none;background:#eee;color:var(--dark);font-weight:700;text-decoration:none;cursor:pointer}
+.btn.primary{background:var(--dark);color:white}
+.btn.big{font-size:20px;padding:16px 28px}
+.levels{display:flex;gap:12px;margin-top:14px}
+.card{flex:1;background:white;padding:16px;border-radius:12px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,0.06)}
+.level-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin:18px 0}
+.level-card{display:block;padding:18px;background:var(--yellow);border-radius:12px;text-decoration:none;color:var(--dark);text-align:center;font-weight:700}
+.level-card.disabled{opacity:0.6;pointer-events:none;filter:grayscale(0.25);position:relative}
+.level-card.disabled::after{content:'Maintenance';position:absolute;right:8px;top:8px;font-size:12px;color:#2C2C2C;opacity:0.8}
+.shape-selector{display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.shape-btn{flex:1;min-width:120px;padding:14px;border-radius:12px;border:2px solid rgba(0,0,0,0.06);background:white;font-weight:700;cursor:pointer;text-align:center}
+.shape-btn.active{background:var(--yellow);border-color:var(--orange)}
+.tracing-area{max-width:980px;margin:18px auto;padding:0 18px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.canvas-wrap{background:linear-gradient(180deg,#fff 0%,#fff8 100%);padding:18px;border-radius:18px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+#traceCanvas{display:block;border-radius:12px;background:#fff;width:100%;height:auto;touch-action:none}
+.controls{display:flex;gap:10px}
+.btn.small{padding:8px 12px;border-radius:10px}
+.reward{position:fixed;inset:0;background:rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center}
+.reward.hidden{display:none}
+.reward-card{background:white;padding:22px;border-radius:18px;text-align:center;min-width:280px}
+.stars{height:80px;display:flex;align-items:center;justify-content:center;gap:12px}
+.star{width:48px;height:48px;background:var(--yellow);clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);transform:scale(0);opacity:0;position:relative;overflow:hidden;}
+.star.show{animation:pop 700ms cubic-bezier(.2,1.6,.5,1) forwards}
+.star.filled::after{content:'';position:absolute;inset:0;background:linear-gradient(45deg, #FFD84D 25%, #FFA726 25%, #FFA726 50%, #FFD84D 50%, #FFD84D 75%, #FFA726 75%, #FFA726);background-size:20px 20px;opacity:0;transform:scale(0);}
+@keyframes fillStar{
+  to{opacity:0.3;transform:scale(1.1);}
+}
+@keyframes pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.icon-admin{position:fixed;left:16px;bottom:16px;background:rgba(255,255,255,0.95);padding:12px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.08);z-index:60}
+.icon-admin.hidden{display:none}
+
+/* Color palette floating control (moved to bottom-right) */
+.color-palette{position:fixed;right:24px;bottom:24px;z-index:80;display:flex;flex-direction:column;align-items:flex-end}
+.palette-toggle{width:128px;height:128px;display:flex;align-items:center;justify-content:center;padding:0;border-radius:50%;background:transparent;border:none;box-shadow:none;min-width:128px;min-height:128px}
+.palette-icon-img{display:inline-block;width:100%;height:100%;max-width:128px;max-height:128px;object-fit:contain}
+/* spin animation for palette icon */
+@keyframes spinFast{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.palette-toggle.spinning .palette-icon-img{animation:spinFast .6s ease-in-out}
+/* panel should appear above the toggle button when at bottom, so use margin-bottom and positive translateY when hidden */
+/* For radial menu we keep the panel visually minimal and position color buttons absolutely when animating */
+.palette-panel{margin-bottom:8px;background:transparent;padding:0;border-radius:12px;box-shadow:none;opacity:1;transform:none;transition:none;pointer-events:none;min-width:0;min-height:0}
+.color-palette.open .palette-panel{pointer-events:auto}
+/* radial color buttons (we position them dynamically using JS). Buttons are fixed during animation so they float above canvas */
+.colors{position:relative;width:0;height:0}
+.color-btn{position:fixed;left:0;top:0;width:44px;height:44px;border-radius:50%;border:3px solid rgba(0,0,0,0.06);min-width:44px;min-height:44px;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,0.08);transform:translate(0,0) scale(0.95);opacity:0;transition:transform .36s cubic-bezier(.2,.9,.3,1), opacity .28s ease;will-change:transform,opacity}
+.color-btn.radial{z-index:220}
+/* when open we set opacity to 1 and JS will set translate values to make them form a ring */
+.color-palette.open .color-btn{opacity:1}
+.color-btn.active{outline:3px solid rgba(0,0,0,0.12);box-shadow:0 6px 18px rgba(0,0,0,0.12)}
+/* fallback stagger delays - still useful for accessibility and no-JS parity */
+.color-btn:nth-child(1){transition-delay:0.02s}
+.color-btn:nth-child(2){transition-delay:0.06s}
+.color-btn:nth-child(3){transition-delay:0.10s}
+.color-btn:nth-child(4){transition-delay:0.14s}
+.color-btn:nth-child(5){transition-delay:0.18s}
+.color-btn:nth-child(6){transition-delay:0.22s}
+.color-btn:nth-child(7){transition-delay:0.26s}
+.color-btn:nth-child(8){transition-delay:0.30s}
+
+@media (max-width:520px){ .color-palette{right:16px;bottom:16px} .palette-panel{padding:8px} .color-btn{width:48px;height:48px} .palette-toggle{width:88px;height:88px;min-width:88px;min-height:88px} .palette-icon-img{max-width:88px;max-height:88px} }
+@media (hover:hover){ .palette-toggle:hover{transform:translateY(-2px);transition:transform .12s} }
+@media (max-width:520px){ .color-palette{right:16px;bottom:16px} .palette-panel{padding:8px} .color-btn{width:48px;height:48px} .palette-toggle{width:88px;height:88px;min-width:88px;min-height:88px} .palette-icon-img{max-width:88px;max-height:88px} }
+
+@media (max-width:520px){.hero h2{font-size:20px}.bee{width:44px;height:44px}.btn.big{padding:12px 18px}}
